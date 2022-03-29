@@ -1,53 +1,51 @@
-(root)
-    App.kt
-    
-.auth.config
-    Config.kt
-    Constraints.kt
-    KTopics.kt
-    Props.kt
-    Routes.kt
+* .auth
+  * App.kt
 
-.auth.domain
-    Account.kt
-    AccountUser.kt
-    ExternalIdentity.kt
-    IdentityProvider.kt
-    User.kt
-    UserToken.kt
+* .auth.config
+  * Config.kt
+  * Constraints.kt
+  * KTopics.kt
+  * Props.kt
+  * Routes.kt
 
-.auth.process
-    UserSignupProcessManager.kt
+* .auth.domain
+  * Account.kt
+  * AccountUser.kt
+  * ExternalIdentity.kt
+  * IdentityProvider.kt
+  * User.kt
+  * UserToken.kt
 
-.auth.repository
-    Projections.kt
-    Repositories.kt
-    SqlQueryBuilders.kt
-    SqlQueryRepository.kt
+* .auth.process
+  * UserSignupProcessManager.kt
 
-.auth.service
-    JwtFactory.kt
+* .auth.repository
+  * Projections.kt
+  * Repositories.kt
+  * SqlQueryBuilders.kt
+  * SqlQueryRepository.kt
 
-.auth.usecase.account
-    CreateAccountUsecase.kt
-    GetCurrentAccountUsecase.kt
-    ListMyAccountsUsecase.kt
-    SelectAccountUsecase.kt
+* .auth.service
+  * JwtFactory.kt
 
-.auth.usecase.token
-    GrantPasswordTokenUsecase.kt
-    GrantRefreshTokenUsecase.kt
-    LogoutUserUsecase.kt
+* .auth.usecase.account
+  * CreateAccountUsecase.kt
+  * GetCurrentAccountUsecase.kt
+  * ListMyAccountsUsecase.kt
+  * SelectAccountUsecase.kt
 
-.auth.usecase.user
-    ConfirmUserEmailVerificationUsecase.kt
-    GetUserProfileUsecase.kt
-    RequestUserEmailVerificationUsecase.kt
-    SignupUserUsecase.kt
+* .auth.usecase.token
+  * GrantPasswordTokenUsecase.kt
+  * GrantRefreshTokenUsecase.kt
+  * LogoutUserUsecase.kt
 
-.auth.web
-    AccountController.kt
-    AuthController.kt
-    TaskController.kt
+* .auth.usecase.user
+  * ConfirmUserEmailVerificationUsecase.kt
+  * GetUserProfileUsecase.kt
+  * RequestUserEmailVerificationUsecase.kt
+  * SignupUserUsecase.kt
 
-
+* .auth.web
+  * AccountController.kt
+  * AuthController.kt
+  * TaskController.kt
