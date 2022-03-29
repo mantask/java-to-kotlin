@@ -2,16 +2,11 @@
 @AllArgsConstructor
 public class AuthController {
     public static final String REFRESH_TOKEN_COOKIE = "refreshToken";
-    private final AuthContextFactory authContextFactory;
     private final RequestValidator requestValidator;
     private final GetTokenKeyUsecase getTokenKeyUsecase;
     private final GrantPasswordTokenUsecase grantPasswordTokenUsecase;
     private final GrantRefreshTokenUsecase grantRefreshTokenUsecase;
-    private final SignupUserUsecase signupUserUsecase;
-    private final RequestUserEmailVerificationUsecase requestUserEmailVerificationUsecase;
     private final LogoutUserUsecase logoutUserUsecase;
-    private final ConfirmUserEmailVerificationUsecase confirmUserEmailVerificationUsecase;
-    private final GetUserProfileUsecase getUserProfileUsecase;
 
     public Mono<ServerResponse> tokenKey(ServerRequest request) {
         return getTokenKeyUsecase.execute()
@@ -57,31 +52,4 @@ public class AuthController {
             .flatMap(grantRefreshTokenUsecase::execute)
             .flatMap(it -> ServerResponse.ok().bodyValue(it));
     }
-
-    public Mono<ServerResponse> signup(ServerRequest req) {
-        return req.bodyToMono(SignupUserUsecase.Command.class)
-            .flatMap(requestValidator::validate)
-            .flatMap(signupUserUsecase::execute)
-            .then(ServerResponse.ok().build());
-    }
-
-    public Mono<ServerResponse> requestEmailVerification(ServerRequest req) {
-        return authContextFactory.build(req)
-            .flatMap(auth -> requestUserEmailVerificationUsecase.execute(auth.getUserId()))
-            .then(ServerResponse.ok().build());
-    }
-
-    public Mono<ServerResponse> confirmEmailVerification(ServerRequest req) {
-        return req.bodyToMono(ConfirmUserEmailVerificationUsecase.Command.class)
-            .flatMap(requestValidator::validate)
-            .flatMap(confirmUserEmailVerificationUsecase::execute)
-            .then(ServerResponse.ok().build());
-    }
-
-    public Mono<ServerResponse> profile(ServerRequest req) {
-        return authContextFactory.build(req)
-            .flatMap(getUserProfileUsecase::execute)
-            .flatMap(it -> ServerResponse.ok().bodyValue(it));
-    }
 }
-
